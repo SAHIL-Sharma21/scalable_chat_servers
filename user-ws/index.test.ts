@@ -58,8 +58,6 @@ describe("Chat application", () => {
           message: "Hi there",
         })
       );
-
-
     });
   });
 });
