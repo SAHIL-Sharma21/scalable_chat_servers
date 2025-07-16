@@ -9,7 +9,7 @@ describe("Chat application", () => {
     const ws2 = new WebSocket(BACKEND_URL);
 
     // make sure the socktes are connected.  we can achieve this by using promise, its like pausing the thread and then pasing the control
-    await new Promise<void>((resolve, reject) => {
+    await new Promise<void>((resolve) => {
       let count = 0;
       ws1.onopen = () => {
         count++;
@@ -40,10 +40,10 @@ describe("Chat application", () => {
       })
     );
 
-    console.log("Hello i have reachers here")
+    console.log("Hello i have reachers here");
 
     await new Promise<void>((resolve) => {
-      ws2.onmessage = ({data}) => {
+      ws2.onmessage = ({ data }) => {
         console.log(data.toString());
         const parsedData = JSON.parse(data);
         expect(parsedData.type == "chat");
