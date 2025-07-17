@@ -1,12 +1,13 @@
 import { describe, expect, test } from "bun:test";
 
-const BACKEND_URL = "ws://localhost:8080";
+const BACKEND_URL1 = "ws://localhost:8080";
+const BACKEND_URL2 = "ws://localhost:8081"
 
 describe("Chat application", () => {
   test("Message sent form room 1 reaches another participant in room 1", async () => {
     // create 2 ws connection
-    const ws1 = new WebSocket(BACKEND_URL);
-    const ws2 = new WebSocket(BACKEND_URL);
+    const ws1 = new WebSocket(BACKEND_URL1);
+    const ws2 = new WebSocket(BACKEND_URL2);
 
     // make sure the socktes are connected.  we can achieve this by using promise, its like pausing the thread and then pasing the control
     await new Promise<void>((resolve) => {
